@@ -1,6 +1,7 @@
 package com.xxl.job.admin.core.conf;
 
 import com.xxl.job.admin.core.alarm.JobAlarmer;
+import com.xxl.job.admin.core.holiday.HolidayBreakHandle;
 import com.xxl.job.admin.core.scheduler.XxlJobScheduler;
 import com.xxl.job.admin.dao.*;
 import org.springframework.beans.factory.DisposableBean;
@@ -85,6 +86,8 @@ public class XxlJobAdminConfig implements InitializingBean, DisposableBean {
     private DataSource dataSource;
     @Resource
     private JobAlarmer jobAlarmer;
+    @Resource
+    private HolidayBreakHandle holidayBreakHandle;
 
 
     public String getI18n() {
@@ -155,4 +158,7 @@ public class XxlJobAdminConfig implements InitializingBean, DisposableBean {
         return jobAlarmer;
     }
 
+    public HolidayBreakHandle getHolidayBreakHandle() {
+        return holidayBreakHandle;
+    }
 }

@@ -5,6 +5,7 @@ import com.xxl.job.admin.core.model.XxlJobGroup;
 import com.xxl.job.admin.core.model.XxlJobInfo;
 import com.xxl.job.admin.core.model.XxlJobLog;
 import com.xxl.job.admin.core.route.ExecutorRouteStrategyEnum;
+import com.xxl.job.admin.core.scheduler.HolidayBreakEnum;
 import com.xxl.job.admin.core.scheduler.XxlJobScheduler;
 import com.xxl.job.admin.core.util.I18nUtil;
 import com.xxl.job.core.biz.ExecutorBiz;
@@ -54,6 +55,18 @@ public class XxlJobTrigger {
             logger.warn(">>>>>>>>>>>> trigger fail, jobId invalid，jobId={}", jobId);
             return;
         }
+
+        // holiday break
+        if (HolidayBreakEnum.OPEN.name().equals(jobInfo.getHolidayBreak())) {
+            Boolean holidayBreak = XxlJobAdminConfig.getAdminConfig().getHolidayBreakHandle().handle(new Date());
+            if (holidayBreak) {
+                logger.info(">>>>>>>>>>> xxl-job,today is a holiday job break, jobId = " + jobInfo.getId());
+                return;
+            } else {
+                logger.info(">>>>>>>>>>> xxl-job,today is not holiday job continue, jobId = " + jobInfo.getId());
+            }
+        }
+
         if (executorParam != null) {
             jobInfo.setExecutorParam(executorParam);
         }

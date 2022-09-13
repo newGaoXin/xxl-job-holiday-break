@@ -23,6 +23,7 @@ public class XxlJobInfo {
 	private String scheduleType;			// 调度类型
 	private String scheduleConf;			// 调度配置，值含义取决于调度类型
 	private String misfireStrategy;			// 调度过期策略
+	private String holidayBreak;
 
 	private String executorRouteStrategy;	// 执行器路由策略
 	private String executorHandler;		    // 执行器，任务Handler名称
@@ -233,5 +234,13 @@ public class XxlJobInfo {
 
 	public void setTriggerNextTime(long triggerNextTime) {
 		this.triggerNextTime = triggerNextTime;
+	}
+
+	public String getHolidayBreak() {
+		return holidayBreak;
+	}
+
+	public void setHolidayBreak(String holidayBreak) {
+		this.holidayBreak = holidayBreak;
 	}
 }

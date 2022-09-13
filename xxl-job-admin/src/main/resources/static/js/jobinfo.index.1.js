@@ -90,6 +90,14 @@ $(function() {
 	                },
 	                { "data": 'author', "visible" : true, "width":'10%'},
 	                { "data": 'alarmEmail', "visible" : false},
+					// {
+					// 	"data": 'scheduleType',
+					// 	"visible" : true,
+					// 	"width":'10%',
+					// 	"render": function ( data, type, row ) {
+					// 			return row.scheduleType;
+					// 	}
+					// },
 	                {
 	                	"data": 'triggerStatus',
 						"width":'10%',
@@ -553,6 +561,7 @@ $(function() {
 		} else if (row.scheduleType == 'FIX_DELAY') {
 			$("#updateModal .form input[name='schedule_conf_FIX_DELAY']").val( row.scheduleConf );
 		}
+		$('#updateModal .form select[name=holidayBreak] option[value='+ row.holidayBreak +']').prop('selected', true);
 
 		// 》init scheduleType
 		$("#updateModal .form select[name=scheduleType]").change();
