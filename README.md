@@ -6,7 +6,7 @@ https://github.com/xuxueli/xxl-job/
 （It is very troublesome to manually suspend and close some tasks every time when you encounter some tasks that need to rest on holidays.）
 
 ## 使用 （Use）
-切换分支 2.3.0 （check branches 2.3.0）
+切换分支 2.3.0_holiday_break （check branches 2.3.0_holiday_break）
 
 数据库变更
 ```sql
